@@ -63,7 +63,7 @@ Writer:	418	David	Crane	USA	Romance
 Writer:	419	Marta	Kauffman	USA	Romance
 Writer:	420	Mihael	Curtis	USA	Comedy
 ChildActor:	421	Noelle	Sheldon	USA	29
-ChildActor:	422	Cali	Sheldon	USA	29	
+ChildActor:	422	Cali	Sheldon	USA	29
 ChildActor:	423	Dakota	Fanning	USA	27
 Actor:	424	Matt	LeBlanc	USA	178
 Actor:	425	Matthew	Perry	USA	183
