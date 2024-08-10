@@ -4,8 +4,8 @@ public class FilmFeature extends Films {
     private String writers;
     private String genre;
 
-    public FilmFeature(String id, String title, String language, String runtime, String country, String directors,
-            String cast, String releaseDate, String budget, String writers, String genre) {
+    public FilmFeature(String id, String title, String language, String directors, String runtime, String country,
+            String cast, String genre, String releaseDate, String writers, String budget) {
         super(id, title, language, runtime, country, directors, cast);
         this.releaseDate = releaseDate;
         this.budget = budget;

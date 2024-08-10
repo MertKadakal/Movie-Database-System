@@ -3,8 +3,8 @@ public class FilmShort extends Films {
     private String writers;
     private String genre;
 
-    public FilmShort(String id, String title, String language, String runtime, String country, String directors,
-            String cast, String releaseDate, String writers, String genre) {
+    public FilmShort(String id, String title, String language, String directors, String runtime, String country, 
+            String cast, String genre, String releaseDate, String writers) {
         super(id, title, language, runtime, country, directors, cast);
         this.releaseDate = releaseDate;
         this.writers = writers;

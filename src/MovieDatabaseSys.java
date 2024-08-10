@@ -58,7 +58,7 @@ public class MovieDatabaseSys {
         for (int i =0; i < commands_txt.length; i++) {
             String[] command_line = commands_txt[i].split("\t");
             switch (command_line[0]) {
-                case ("RATE"):
+                case "RATE":
                     for (Person person : peopleList) {
                         if (person instanceof User) {
                             if (person.getId().equals(command_line[1])) {
@@ -67,14 +67,9 @@ public class MovieDatabaseSys {
                         }
                     }
                     break;
-            }
-        }
-
-        for (int i =0; i < peopleList.size(); i++) {
-            if (peopleList.get(i) instanceof User) {
-                User user = (User) peopleList.get(i);
-                System.out.println(user.id);
-                System.out.println(user.getRates().values());
+                case "ADD":
+                    filmList.add(new FilmFeature(command_line[2], command_line[3], command_line[4], command_line[5], command_line[6], command_line[7], command_line[8], command_line[9], command_line[10], command_line[11], command_line[12]));
+                    break;
             }
         }
     }

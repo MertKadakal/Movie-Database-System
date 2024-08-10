@@ -6,9 +6,8 @@ public class FilmTvseries extends Films {
     private String genre;
     private String writers;
 
-    public FilmTvseries(String id, String title, String language, String runtime, String country, String directors,
-            String cast, String startDate, String endDate, String seasonNumber, String episodeNumber, String genre,
-            String writers) {
+    public FilmTvseries(String id, String title, String language, String directors, String runtime, String country, 
+            String cast, String genre, String writers, String startDate, String endDate, String seasonNumber, String episodeNumber) {
         super(id, title, language, runtime, country, directors, cast);
         this.startDate = startDate;
         this.endDate = endDate;
