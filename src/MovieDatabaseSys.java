@@ -7,6 +7,7 @@ public class MovieDatabaseSys {
         String[] films_txt = FileInput.readFile("src\\IO_1\\films.txt", true, true);
         String[] people_txt = FileInput.readFile("src\\IO_1\\people.txt", true, true);
         String output_path = "src\\output.txt";
+        FileOutput.writeToFile(output_path, "", false, false);
 
         //obtain people datas
         ArrayList<Person> peopleList = new ArrayList<>();
@@ -69,6 +70,17 @@ public class MovieDatabaseSys {
                     break;
                 case "ADD":
                     filmList.add(new FilmFeature(command_line[2], command_line[3], command_line[4], command_line[5], command_line[6], command_line[7], command_line[8], command_line[9], command_line[10], command_line[11], command_line[12]));
+                    break;
+                case "VIEWFILM":
+                    for (int j = 0; j<filmList.size(); j++) {
+                        if (filmList.get(j).id.equals(command_line[1])) {
+                            if ((filmList.get(j) instanceof FilmFeature)) {
+                                FilmFeature theFilm = (FilmFeature) filmList.get(j);
+                                FileOutput.writeToFile(output_path, String.format("%s\t(%s)\n\n%s\nWriters:%s\nDirectors:%s\n-----------------------------------\n", command_line[0], theFilm.getReleaseDate(), theFilm.getGenre(), theFilm.getWriters(), theFilm.getDirectors()),true, false);
+                            }
+                            break;
+                        }
+                    }
                     break;
             }
         }
