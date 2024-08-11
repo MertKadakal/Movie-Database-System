@@ -74,8 +74,14 @@ public class MovieDatabaseSys {
                 case "VIEWFILM":
                     for (int j = 0; j<filmList.size(); j++) {
                         if (filmList.get(j).id.equals(command_line[1])) {
-                            if ((filmList.get(j) instanceof FilmFeature)) {
-                                FilmFeature theFilm = (FilmFeature) filmList.get(j);
+                            if ((filmList.get(j) instanceof FilmFeature) || (filmList.get(j) instanceof FilmShort)) {
+                                Films theFilm;
+                                if ((filmList.get(j) instanceof FilmFeature)) {
+                                    theFilm = (FilmFeature) filmList.get(j);
+                                }
+                                else {
+                                    theFilm = (FilmShort) filmList.get(j);
+                                }
 
                                 //convert writer ids to names
                                 StringBuilder tem_writers = new StringBuilder("");
@@ -110,7 +116,7 @@ public class MovieDatabaseSys {
                                 }
                                 tem_stars.delete(tem_stars.length()-2, tem_stars.length());
 
-                                //rating
+                                //calculate the average rating score
                                 Double total_rating = 0.0;
                                 int total_users_rated = 0;
                                 for (int k = 0; k<peopleList.size(); k++) {

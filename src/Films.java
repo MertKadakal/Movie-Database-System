@@ -1,4 +1,4 @@
-public class Films {
+abstract class Films {
     protected String id;
     protected String title;
     protected String language;
@@ -73,4 +73,8 @@ public class Films {
     public void setCast(String cast) {
         this.cast = cast;
     }
+
+    abstract String getWriters();
+    abstract String getGenre();
+    abstract String getReleaseDate();
 }
