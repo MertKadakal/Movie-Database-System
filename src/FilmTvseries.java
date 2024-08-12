@@ -64,4 +64,10 @@ public class FilmTvseries extends Films {
     public void setWriters(String writers) {
         this.writers = writers;
     }
+
+    @Override
+    String getReleaseDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReleaseDate'");
+    }
 }

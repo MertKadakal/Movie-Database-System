@@ -14,4 +14,16 @@ public class FilmDocumentaries extends Films {
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    @Override
+    String getWriters() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getWriters'");
+    }
+
+    @Override
+    String getGenre() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getGenre'");
+    }
 }

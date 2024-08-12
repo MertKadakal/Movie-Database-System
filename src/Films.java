@@ -74,7 +74,8 @@ abstract class Films {
         this.cast = cast;
     }
 
-    abstract String getWriters();
+    String getWriters() {
+        return cast;};
     abstract String getGenre();
     abstract String getReleaseDate();
 }
