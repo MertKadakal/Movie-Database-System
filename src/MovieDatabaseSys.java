@@ -72,10 +72,11 @@ public class MovieDatabaseSys {
                     filmList.add(new FilmFeature(command_line[2], command_line[3], command_line[4], command_line[5], command_line[6], command_line[7], command_line[8], command_line[9], command_line[10], command_line[11], command_line[12]));
                     break;
                 case "VIEWFILM":
-                    Films theFilm;
+                    
                     for (int j = 0; j<filmList.size(); j++) {
                         if (filmList.get(j).id.equals(command_line[1])) {
                             if ((filmList.get(j) instanceof FilmFeature) || (filmList.get(j) instanceof FilmShort)) {
+                                Films theFilm;
                                 if ((filmList.get(j) instanceof FilmFeature)) {
                                     theFilm = (FilmFeature) filmList.get(j);
                                 }
@@ -129,10 +130,10 @@ public class MovieDatabaseSys {
                                     }
                                 }
 
-                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\nRatings: %s from %d users\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, String.valueOf(total_rating/total_users_rated), total_users_rated),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\nRatings: %s/10 from %d users\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, String.valueOf(total_rating/total_users_rated), total_users_rated),true, false);
                             }
                             else if ((filmList.get(j) instanceof FilmDocumentaries)) {
-                                theFilm = (FilmDocumentaries) filmList.get(j);
+                                FilmDocumentaries theFilm = (FilmDocumentaries) filmList.get(j);
 
                                //convert director ids to names
                                StringBuilder tem_directors = new StringBuilder("");
@@ -168,7 +169,57 @@ public class MovieDatabaseSys {
                                        }
                                    }
                                }
-                               FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n\nDirectors: %s\nStars: %s\nRatings: %s from %d users\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, String.valueOf(total_rating/total_users_rated), total_users_rated),true, false);
+                               FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n\nDirectors: %s\nStars: %s\nRatings: %s/10 from %d users\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, String.valueOf(total_rating/total_users_rated), total_users_rated),true, false);
+                            }
+                            else if ((filmList.get(j) instanceof FilmTvseries)) {
+                                FilmTvseries theFilm = (FilmTvseries) filmList.get(j);
+
+                                //convert writer ids to names
+                                StringBuilder tem_writers = new StringBuilder("");
+                                for (int k = 0; k<theFilm.getWriters().split(",").length; k++) {
+                                    for (int m = 0; m<peopleList.size(); m++) {
+                                        if (theFilm.getWriters().split(",")[k].equals(peopleList.get(m).id)) {
+                                            tem_writers.append(peopleList.get(m).name + " " + peopleList.get(m).surname + ", ");
+                                        }
+                                    }
+                                }
+                                tem_writers.delete(tem_writers.length()-2, tem_writers.length());
+
+                                //convert director ids to names
+                                StringBuilder tem_directors = new StringBuilder("");
+                                for (int k = 0; k<theFilm.getDirectors().split(",").length; k++) {
+                                    for (int m = 0; m<peopleList.size(); m++) {
+                                        if (theFilm.getDirectors().split(",")[k].equals(peopleList.get(m).id)) {
+                                            tem_directors.append(peopleList.get(m).name + " " + peopleList.get(m).surname + ", ");
+                                        }
+                                    }
+                                }
+                                tem_directors.delete(tem_directors.length()-2, tem_directors.length());
+ 
+                                //convert performer ids to names
+                                StringBuilder tem_stars = new StringBuilder("");
+                                for (int k = 0; k<theFilm.getCast().split(",").length; k++) {
+                                    for (int m = 0; m<peopleList.size(); m++) {
+                                        if (theFilm.getCast().split(",")[k].equals(peopleList.get(m).id)) {
+                                            tem_stars.append(peopleList.get(m).name + " " + peopleList.get(m).surname + ", ");
+                                        }
+                                    }
+                                }
+                                tem_stars.delete(tem_stars.length()-2, tem_stars.length());
+ 
+                                //calculate the average rating score
+                                Double total_rating = 0.0;
+                                int total_users_rated = 0;
+                                for (int k = 0; k<peopleList.size(); k++) {
+                                    if (peopleList.get(k) instanceof User) {
+                                        User user = (User) peopleList.get(k);
+                                        if (user.getRates().containsKey(theFilm.id)) {
+                                            total_rating += Integer.parseInt(user.getRates().get(theFilm.id));
+                                            total_users_rated++;
+                                        }
+                                    }
+                                }
+                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s-%s)\n%s seasons, %s episodes\n%s\nWriters: %s\nDirectors: %s\nStars: %s\nRatings: %s/10 from %d users\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getStartDate().substring(6, 10), theFilm.getEndDate().substring(6, 10), theFilm.getSeasonNumber(), theFilm.getEpisodeNumber(), theFilm.getGenre().replace(",", ", "), tem_writers, tem_directors, tem_stars, String.valueOf(total_rating/total_users_rated), total_users_rated),true, false);
                             }
                             break;
                         }

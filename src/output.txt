@@ -5,7 +5,7 @@ Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 9.5 from 2 users
+Ratings: 9.5/10 from 2 users
 -----------------------------------
 
 VIEWFILM	101
@@ -15,7 +15,7 @@ Drama
 Writers: Jenni Jenkins
 Directors: Ramin Bahrani
 Stars: Werner Herzog, Jaeden Martell
-Ratings: 6.0 from 1 users
+Ratings: 6.0/10 from 1 users
 -----------------------------------
 
 VIEWFILM	115
@@ -25,7 +25,7 @@ Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 8.8 from 5 users
+Ratings: 8.8/10 from 5 users
 -----------------------------------
 
 VIEWFILM	103
@@ -34,6 +34,39 @@ VIEWFILM	103
 
 Directors: Emad Burnat, Guy Davidi
 Stars: Gibreel Burnat, Mohammed Burnat, Yasin Burnat
-Ratings: 8.0 from 1 users
+Ratings: 8.0/10 from 1 users
+-----------------------------------
+
+VIEWFILM	108
+
+Friends	(1994-2004)
+10 seasons, 236 episodes
+Comedy, Romance
+Writers: David Crane, Marta Kauffman, Mihael Curtis
+Directors: Kevin Bright
+Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
+Ratings: 8.0/10 from 1 users
+-----------------------------------
+
+VIEWFILM	108
+
+Friends	(1994-2004)
+10 seasons, 236 episodes
+Comedy, Romance
+Writers: David Crane, Marta Kauffman, Mihael Curtis
+Directors: Kevin Bright
+Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
+Ratings: 8.0/10 from 1 users
+-----------------------------------
+
+VIEWFILM	106
+
+Lost	(2004-2010)
+6 seasons, 121 episodes
+Adventure, Drama, Fantasy
+Writers: Damon Lindelof, Carlton Cuse, Edward Kitsis, Adam Horowitz, Elizabeth Sarnoff
+Directors: Jack Bender, Stephen Williams
+Stars: Jorge Garcia, Naveen Andrews, Matthew Fox, Josh Holloway, Storm Reid, Noah Jupe, Julian Dennison
+Ratings: 8.5/10 from 4 users
 -----------------------------------
 
