@@ -310,6 +310,41 @@ public class MovieDatabaseSys {
                         }
                     }
                     break;
+                case "EDIT":
+                    String user_id2 = command_line[2];
+                    boolean check_id_user2 = true;
+                    boolean check_user_has_rating = false;
+
+                    for (Person user : peopleList) {
+                        if (user.id.equals(user_id2) && (user.getClass().getName().equals("User"))) {
+                            check_id_user2 = false;
+                            if (((User)user).getRates().containsKey(command_line[3])) {
+                                check_user_has_rating = true;
+                            }
+                        }
+                    }
+
+                    if ((check_id_user2) || (!(check_user_has_rating))) {
+                        FileOutput.writeToFile(output_path, String.format("Command failed\nUser ID: %s\nFilm ID: %s\n\n-----------------------------------------------------------------------------------------------------\n", user_id2, command_line[3]),true, false);
+                    }
+                    else {
+                        for (Person person : peopleList) {
+                            if (person instanceof User) {
+                                if (person.getId().equals(command_line[2])) {
+                                    ((User)person).getRates().put(command_line[3], command_line[4]);
+                                }
+                            }
+                        }
+                        String film_title = null;
+                        for (Films film : filmList) {
+                            if (film.id.equals(command_line[3])) {
+                                film_title = film.title;
+                            }
+                        }
+                        FileOutput.writeToFile(output_path, String.format("New ratings done successfully\nFilm title: %s\nYour rating: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_title, command_line[4]),true, false);
+                    }
+                    break;
+                /*
                 case "LIST":
                     if (command_line[1].equals("USER")) {
                         String userId = command_line[2];
@@ -335,8 +370,8 @@ public class MovieDatabaseSys {
                         System.out.println(ratings);
                         
                         //FileOutput.writeToFile(output_path, String.format("%s\n\n%s", command_line[0], filmList.get(filmList.indexOf(peopleList))), false, false);
+                        */
                     }
             }
         }
     }
-}
