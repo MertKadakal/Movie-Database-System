@@ -6,6 +6,7 @@ public class MovieDatabaseSys {
         String[] commands_txt = FileInput.readFile("src\\IO_1\\commands.txt", true, true);
         String[] films_txt = FileInput.readFile("src\\IO_1\\films.txt", true, true);
         String[] people_txt = FileInput.readFile("src\\IO_1\\people.txt", true, true);
+        ArrayList<String> rated_films = new ArrayList<>();
         String output_path = "src\\output.txt";
         FileOutput.writeToFile(output_path, "", false, false);
 
@@ -58,18 +59,71 @@ public class MovieDatabaseSys {
         //execute commands
         for (int i =0; i < commands_txt.length; i++) {
             String[] command_line = commands_txt[i].split("\t");
+            FileOutput.writeToFile(output_path, String.format("%s\n\n", commands_txt[i]),true, false);
             switch (command_line[0]) {
                 case "RATE":
-                    for (Person person : peopleList) {
-                        if (person instanceof User) {
-                            if (person.getId().equals(command_line[1])) {
-                                ((User)person).getRates().put(command_line[2], command_line[3]);
-                            }
+                    String user_id = command_line[1];
+                    boolean check_id_user = true;
+                    boolean check_rated_before = false;
+
+                    for (Person user : peopleList) {
+                        if (user.id.equals(user_id) && (user.getClass().getName().equals("User"))) {
+                            check_id_user = false;
                         }
                     }
+                    if (rated_films.contains(command_line[2])) { 
+                        check_rated_before = true;
+                    }
+
+                    if (check_id_user) {
+                        FileOutput.writeToFile(output_path, String.format("Command failed\nUser ID: %s\nFilm ID: %s\n\n-----------------------------------------------------------------------------------------------------\n", user_id, command_line[2]),true, false);
+                    }
+                    else if (check_rated_before) {
+                        FileOutput.writeToFile(output_path, "This film was earlier rated\n\n-----------------------------------------------------------------------------------------------------\n",true, false);
+                    }
+                    else {
+                        for (Person person : peopleList) {
+                            if (person instanceof User) {
+                                if (person.getId().equals(command_line[1])) {
+                                    ((User)person).getRates().put(command_line[2], command_line[3]);
+                                    rated_films.add(command_line[2]);
+                                }
+                            }
+                        }
+                        String film_type = null;
+                        String flim_title = null;
+                        for (Films film : filmList) {
+                            if (film.id.equals(command_line[2])) {
+                                film_type = film.getClass().getName();
+                                flim_title = film.title;
+                            }
+                        }
+                        FileOutput.writeToFile(output_path, String.format("Film rated successfully\nFilm Type: %s\nFilm title: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_type, flim_title),true, false);
+                    }
+                    
                     break;
                 case "ADD":
-                    filmList.add(new FilmFeature(command_line[2], command_line[3], command_line[4], command_line[5], command_line[6], command_line[7], command_line[8], command_line[9], command_line[10], command_line[11], command_line[12]));
+                    String film_id = command_line[2];
+                    String film_director = command_line[5];
+                    boolean check_id = true;
+                    boolean check_director = true;
+
+                    for (Films film : filmList) {
+                        if (film.id.equals(film_id)) {
+                            check_id = false;
+                        }
+                        if (film.directors.equals(film_director)) {
+                            check_director = false;
+                        }
+                    }
+
+                    if (check_director && check_id) {
+                        filmList.add(new FilmFeature(command_line[2], command_line[3], command_line[4], command_line[5], command_line[6], command_line[7], command_line[8], command_line[9], command_line[10], command_line[11], command_line[12]));
+                        FileOutput.writeToFile(output_path, String.format("FeatureFilm added successfully\nFilm ID: %s\nFilm title: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_id, command_line[3]),true, false);
+                    }
+                    else {
+                        FileOutput.writeToFile(output_path, String.format("Command Failed\nFilm ID: %s\nFilm title: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_id, command_line[3]),true, false);
+                    }
                     break;
                 case "VIEWFILM":
                     
@@ -136,7 +190,7 @@ public class MovieDatabaseSys {
                                 else {
                                     rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s\t(%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n-----------------------------------------------------------------------------------------------------\n\n",theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, rating),true, false);
                             }
                             else if ((filmList.get(j) instanceof FilmDocumentaries)) {
                                 FilmDocumentaries theFilm = (FilmDocumentaries) filmList.get(j);
@@ -182,7 +236,7 @@ public class MovieDatabaseSys {
                                 else {
                                     rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n\nDirectors: %s\nStars: %s\n%s\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n\nDirectors: %s\nStars: %s\n%s\n-----------------------------------------------------------------------------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, rating),true, false);
                             }
                             else if ((filmList.get(j) instanceof FilmTvseries)) {
                                 FilmTvseries theFilm = (FilmTvseries) filmList.get(j);
@@ -239,7 +293,7 @@ public class MovieDatabaseSys {
                                 else {
                                     rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s-%s)\n%s seasons, %s episodes\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n-----------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getStartDate().substring(6, 10), theFilm.getEndDate().substring(6, 10), theFilm.getSeasonNumber(), theFilm.getEpisodeNumber(), theFilm.getGenre().replace(",", ", "), tem_writers, tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s-%s)\n%s seasons, %s episodes\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n-----------------------------------------------------------------------------------------------------\n\n", command_line[0], theFilm.id, theFilm.title, theFilm.getStartDate().substring(6, 10), theFilm.getEndDate().substring(6, 10), theFilm.getSeasonNumber(), theFilm.getEpisodeNumber(), theFilm.getGenre().replace(",", ", "), tem_writers, tem_directors, tem_stars, rating),true, false);
                             }
                             break;
                         }
@@ -254,6 +308,33 @@ public class MovieDatabaseSys {
                             User user = (User) peopleList.get(j);
                             user.getRates().remove(rate_to_be_removed);
                         }
+                    }
+                    break;
+                case "LIST":
+                    if (command_line[1].equals("USER")) {
+                        String userId = command_line[2];
+                        StringBuilder ratings = new StringBuilder();
+                        User user = null;
+                        for (Person s_user : peopleList) {
+                            if (s_user.getClass().getName().equals("User")) {
+                                if (s_user.id.equals(userId)) {
+                                    user = (User) s_user; 
+                                }
+                            }
+                        }
+                        if (user != null) {
+                            for (String filmid : user.getRates().keySet()) {
+                                for (Films film : filmList) {
+                                    if (film.id.equals(filmid)) {
+                                        ratings.append(film.title +"\n");
+                                    }
+                                }
+                            }
+                        }
+                        
+                        System.out.println(ratings);
+                        
+                        //FileOutput.writeToFile(output_path, String.format("%s\n\n%s", command_line[0], filmList.get(filmList.indexOf(peopleList))), false, false);
                     }
             }
         }

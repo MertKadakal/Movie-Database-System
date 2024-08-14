@@ -1,3 +1,160 @@
+RATE	470	113	9
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: Amelie
+
+-----------------------------------------------------------------------------------------------------
+RATE	470	113	9
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	454	113	8
+
+Command failed
+User ID: 454
+Film ID: 113
+
+-----------------------------------------------------------------------------------------------------
+ADD	FEATUREFILM	115	Fight_Club	English	463	139	USA	466,467	Drama	10.12.1999	464,465	63000000
+
+FeatureFilm added successfully
+Film ID: 115
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+ADD	FEATUREFILM	115	Night_Club	English	463	139	USA	466,467	Drama	10.12.1999	464,465	63000000
+
+Command Failed
+Film ID: 115
+Film title: Night_Club
+
+-----------------------------------------------------------------------------------------------------
+ADD	FEATUREFILM	116	Right_Club	English	463	139	USA	466,999	Drama	10.12.1999	464,465	63000000
+
+Command Failed
+Film ID: 116
+Film title: Right_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	475	115	10
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	477	115	9
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	480	111	9
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: Biyeolhan_Geori
+
+-----------------------------------------------------------------------------------------------------
+RATE	477	111	7
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	476	114	10
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: The_Godfather
+
+-----------------------------------------------------------------------------------------------------
+RATE	474	114	10
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	114	9
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	112	8
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: Silver_Linings_Playbook
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	103	8
+
+Film rated successfully
+Film Type: FilmDocumentaries
+Film title: 5_Broken_Cameras
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	101	6
+
+Film rated successfully
+Film Type: FilmShort
+Film title: Plastic_Bag
+
+-----------------------------------------------------------------------------------------------------
+RATE	471	102	10
+
+Film rated successfully
+Film Type: FilmTvseries
+Film title: Coupling
+
+-----------------------------------------------------------------------------------------------------
+RATE	479	102	9
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	100	9
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: La_meglio_gioventu
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	109	9
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: Before_Sunrise
+
+-----------------------------------------------------------------------------------------------------
+RATE	476	104	9
+
+Film rated successfully
+Film Type: FilmFeature
+Film title: Pulp_Fiction
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	106	9
+
+Film rated successfully
+Film Type: FilmTvseries
+Film title: Lost
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	106	8
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	471	106	7
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	106	10
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
 VIEWFILM	115
 
 Fight_Club	(1999)
@@ -5,8 +162,8 @@ Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 9.5/10 from 2 users
------------------------------------
+Ratings: 10.0/10 from 1 users
+-----------------------------------------------------------------------------------------------------
 
 VIEWFILM	101
 
@@ -16,8 +173,30 @@ Writers: Jenni Jenkins
 Directors: Ramin Bahrani
 Stars: Werner Herzog, Jaeden Martell
 Ratings: 6.0/10 from 1 users
------------------------------------
+-----------------------------------------------------------------------------------------------------
 
+RATE	470	115	9
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	479	115	8
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	115	8
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	470	108	8
+
+Film rated successfully
+Film Type: FilmTvseries
+Film title: Friends
+
+-----------------------------------------------------------------------------------------------------
 VIEWFILM	115
 
 Fight_Club	(1999)
@@ -25,8 +204,20 @@ Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 8.8/10 from 5 users
------------------------------------
+Ratings: 10.0/10 from 1 users
+-----------------------------------------------------------------------------------------------------
+
+LIST	USER	470	RATES
+
+LIST	USER	476	RATES
+
+LIST	USER	444	RATES
+
+EDIT	RATE	470	115	10
+
+EDIT	RATE	470	109	10
+
+VIEWFILM	103
 
 VIEWFILM	103
 
@@ -35,7 +226,17 @@ VIEWFILM	103
 Directors: Emad Burnat, Guy Davidi
 Stars: Gibreel Burnat, Mohammed Burnat, Yasin Burnat
 Ratings: 8.0/10 from 1 users
------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+LIST	ARTISTS	FROM	Turkey
+
+EDIT	RATE	470	222	10
+
+LIST	FEATUREFILMS	AFTER	1995
+
+EDIT	RATE	475	109	10
+
+VIEWFILM	108
 
 VIEWFILM	108
 
@@ -46,7 +247,21 @@ Writers: David Crane, Marta Kauffman, Mihael Curtis
 Directors: Kevin Bright
 Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
 Ratings: 8.0/10 from 1 users
------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+RATE	470	100	10
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	113	8
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+REMOVE	RATE	470	108
+
+VIEWFILM	108
 
 VIEWFILM	108
 
@@ -57,7 +272,15 @@ Writers: David Crane, Marta Kauffman, Mihael Curtis
 Directors: Kevin Bright
 Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
 Awaiting for votes
------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+REMOVE	RATE	470	109
+
+LIST	USER	470	RATES
+
+LIST	FILM	SERIES
+
+VIEWFILM	106
 
 VIEWFILM	106
 
@@ -67,6 +290,18 @@ Adventure, Drama, Fantasy
 Writers: Damon Lindelof, Carlton Cuse, Edward Kitsis, Adam Horowitz, Elizabeth Sarnoff
 Directors: Jack Bender, Stephen Williams
 Stars: Jorge Garcia, Naveen Andrews, Matthew Fox, Josh Holloway, Storm Reid, Noah Jupe, Julian Dennison
-Ratings: 8.5/10 from 4 users
------------------------------------
+Ratings: 9.0/10 from 1 users
+-----------------------------------------------------------------------------------------------------
+
+LIST	FILMS	BY	COUNTRY	Japan
+
+LIST	FILMS	BY	COUNTRY	USA
+
+LIST	FEATUREFILMS	BEFORE	1995
+
+LIST	FEATUREFILMS	BEFORE	1920
+
+LIST	FILMS	BY	RATE	DEGREE
+
+LIST	ARTISTS	FROM	USA
 
