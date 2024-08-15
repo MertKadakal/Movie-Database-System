@@ -352,13 +352,16 @@ public class MovieDatabaseSys {
                     break;
                 
                 case "LIST":
-                    StringBuilder command_line_without_last = new StringBuilder();
+                    StringBuilder command_line_without = new StringBuilder();
                     for (int j = 0; j<command_line.length-1;j++) {
-                        command_line_without_last.append(command_line[j] + " ");
+                        command_line_without.append(command_line[j] + " ");
                     }
-                    command_line_without_last.deleteCharAt(command_line_without_last.length()-1);
+                    command_line_without.deleteCharAt(command_line_without.length()-1);
 
-                    if (command_line_without_last.substring(0,9).equals("LIST USER")) {
+                    //which command of "LIST"
+
+                    //LIST USER
+                    if (command_line_without.substring(0,9).equals("LIST USER")) {
                         String userId = command_line[2];
                         StringBuilder ratings = new StringBuilder();
                         User user = null;
@@ -386,7 +389,31 @@ public class MovieDatabaseSys {
                         }
                         
                         FileOutput.writeToFile(output_path, String.format("%s\n-----------------------------------------------------------------------------------------------------\n", ratings), true, false);
-                    } 
+                    }
+                    
+                    //LIST FILM SERIES
+                    if (command_line_without.substring(0,9).equals("LIST FILM")) {
+                        boolean check_tvseries = true;
+                        ArrayList<FilmTvseries> tvseries = new ArrayList<>();
+                        for (Films film : filmList) {
+                            if (film.getClass().getName().equals("FilmTvseries")) {
+                                check_tvseries = false;
+                                tvseries.add((FilmTvseries) film);
+                            }
+                        }
+
+                        StringBuilder result = new StringBuilder();
+                        if (check_tvseries) {
+                            result.append("No result");
+                        }
+                        else {
+                            for (FilmTvseries film : tvseries) {
+                                result.append(String.format("%s (%s-%s)\n%s seasons and %s episodes\n\n", film.title, film.getStartDate().substring(6, 10), film.getEndDate().substring(6, 10), film.getSeasonNumber(), film.getEpisodeNumber()));
+                            }
+                        }
+
+                        FileOutput.writeToFile(output_path, String.valueOf(result) + "-----------------------------------------------------------------------------------------------------\n", true, false);
+                    }
                 }
             }
         }

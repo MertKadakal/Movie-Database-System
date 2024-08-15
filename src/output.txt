@@ -346,6 +346,16 @@ Fight_Club: 10
 -----------------------------------------------------------------------------------------------------
 LIST	FILM	SERIES
 
+Coupling (2000-2004)
+4 seasons and 28 episodes
+
+Lost (2004-2010)
+6 seasons and 121 episodes
+
+Friends (1994-2004)
+10 seasons and 236 episodes
+
+-----------------------------------------------------------------------------------------------------
 VIEWFILM	106
 
 VIEWFILM	106
@@ -361,13 +371,43 @@ Ratings: 8.5/10 from 4 users
 
 LIST	FILMS	BY	COUNTRY	Japan
 
+Coupling (2000-2004)
+4 seasons and 28 episodes
+
+Lost (2004-2010)
+6 seasons and 121 episodes
+
+Friends (1994-2004)
+10 seasons and 236 episodes
+
+-----------------------------------------------------------------------------------------------------
 LIST	FILMS	BY	COUNTRY	USA
 
+Coupling (2000-2004)
+4 seasons and 28 episodes
+
+Lost (2004-2010)
+6 seasons and 121 episodes
+
+Friends (1994-2004)
+10 seasons and 236 episodes
+
+-----------------------------------------------------------------------------------------------------
 LIST	FEATUREFILMS	BEFORE	1995
 
 LIST	FEATUREFILMS	BEFORE	1920
 
 LIST	FILMS	BY	RATE	DEGREE
 
+Coupling (2000-2004)
+4 seasons and 28 episodes
+
+Lost (2004-2010)
+6 seasons and 121 episodes
+
+Friends (1994-2004)
+10 seasons and 236 episodes
+
+-----------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	USA
 
