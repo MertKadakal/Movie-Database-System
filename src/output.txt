@@ -7,7 +7,9 @@ Film title: Amelie
 -----------------------------------------------------------------------------------------------------
 RATE	470	113	9
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: Amelie
 
 -----------------------------------------------------------------------------------------------------
 RATE	454	113	8
@@ -47,7 +49,9 @@ Film title: Fight_Club
 -----------------------------------------------------------------------------------------------------
 RATE	477	115	9
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	480	111	9
@@ -59,7 +63,9 @@ Film title: Biyeolhan_Geori
 -----------------------------------------------------------------------------------------------------
 RATE	477	111	7
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: Biyeolhan_Geori
 
 -----------------------------------------------------------------------------------------------------
 RATE	476	114	10
@@ -71,12 +77,16 @@ Film title: The_Godfather
 -----------------------------------------------------------------------------------------------------
 RATE	474	114	10
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: The_Godfather
 
 -----------------------------------------------------------------------------------------------------
 RATE	473	114	9
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: The_Godfather
 
 -----------------------------------------------------------------------------------------------------
 RATE	472	112	8
@@ -109,7 +119,9 @@ Film title: Coupling
 -----------------------------------------------------------------------------------------------------
 RATE	479	102	9
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmTvseries
+Film title: Coupling
 
 -----------------------------------------------------------------------------------------------------
 RATE	478	100	9
@@ -142,17 +154,23 @@ Film title: Lost
 -----------------------------------------------------------------------------------------------------
 RATE	472	106	8
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmTvseries
+Film title: Lost
 
 -----------------------------------------------------------------------------------------------------
 RATE	471	106	7
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmTvseries
+Film title: Lost
 
 -----------------------------------------------------------------------------------------------------
 RATE	478	106	10
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmTvseries
+Film title: Lost
 
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	115
@@ -162,9 +180,9 @@ Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 10.0/10 from 1 users
------------------------------------------------------------------------------------------------------
+Ratings: 9.5/10 from 2 users
 
+-----------------------------------------------------------------------------------------------------
 VIEWFILM	101
 
 Plastic_Bag	(2009)
@@ -173,21 +191,27 @@ Writers: Jenni Jenkins
 Directors: Ramin Bahrani
 Stars: Werner Herzog, Jaeden Martell
 Ratings: 6.0/10 from 1 users
------------------------------------------------------------------------------------------------------
 
+-----------------------------------------------------------------------------------------------------
 RATE	470	115	9
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	479	115	8
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	478	115	8
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	470	108	8
@@ -204,20 +228,33 @@ Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 10.0/10 from 1 users
------------------------------------------------------------------------------------------------------
+Ratings: 8.8/10 from 5 users
 
+-----------------------------------------------------------------------------------------------------
 LIST	USER	470	RATES
 
+Amelie: 9
+Fight_Club: 9
+Friends: 8
+
+-----------------------------------------------------------------------------------------------------
 LIST	USER	476	RATES
 
+The_Godfather: 10
+Pulp_Fiction: 9
+
+-----------------------------------------------------------------------------------------------------
 LIST	USER	444	RATES
 
+Command Failed
+User ID: 444
+
+-----------------------------------------------------------------------------------------------------
 EDIT	RATE	470	115	10
 
-Command failed
-User ID: 470
-Film ID: 115
+New ratings done successfully
+Film title: Fight_Club
+Your rating: 10
 
 -----------------------------------------------------------------------------------------------------
 EDIT	RATE	470	109	10
@@ -271,12 +308,16 @@ Ratings: 8.0/10 from 1 users
 
 RATE	470	100	10
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: La_meglio_gioventu
 
 -----------------------------------------------------------------------------------------------------
 RATE	473	113	8
 
-This film was earlier rated
+Film rated successfully
+Film Type: FilmFeature
+Film title: Amelie
 
 -----------------------------------------------------------------------------------------------------
 REMOVE	RATE	470	108
@@ -298,6 +339,11 @@ REMOVE	RATE	470	109
 
 LIST	USER	470	RATES
 
+La_meglio_gioventu: 10
+Amelie: 9
+Fight_Club: 10
+
+-----------------------------------------------------------------------------------------------------
 LIST	FILM	SERIES
 
 VIEWFILM	106
@@ -310,7 +356,7 @@ Adventure, Drama, Fantasy
 Writers: Damon Lindelof, Carlton Cuse, Edward Kitsis, Adam Horowitz, Elizabeth Sarnoff
 Directors: Jack Bender, Stephen Williams
 Stars: Jorge Garcia, Naveen Andrews, Matthew Fox, Josh Holloway, Storm Reid, Noah Jupe, Julian Dennison
-Ratings: 9.0/10 from 1 users
+Ratings: 8.5/10 from 4 users
 -----------------------------------------------------------------------------------------------------
 
 LIST	FILMS	BY	COUNTRY	Japan

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MovieDatabaseSys {
 
@@ -6,7 +7,7 @@ public class MovieDatabaseSys {
         String[] commands_txt = FileInput.readFile("src\\IO_1\\commands.txt", true, true);
         String[] films_txt = FileInput.readFile("src\\IO_1\\films.txt", true, true);
         String[] people_txt = FileInput.readFile("src\\IO_1\\people.txt", true, true);
-        ArrayList<String> rated_films = new ArrayList<>();
+        HashMap<String, ArrayList<String>> rated_films = new HashMap<>();
         String output_path = "src\\output.txt";
         FileOutput.writeToFile(output_path, "", false, false);
 
@@ -71,9 +72,12 @@ public class MovieDatabaseSys {
                             check_id_user = false;
                         }
                     }
-                    if (rated_films.contains(command_line[2])) { 
+                    if (rated_films.containsKey(user_id)) {
+                        if (rated_films.get(user_id).contains(command_line[2])) { 
                         check_rated_before = true;
+                        }
                     }
+                    
 
                     if (check_id_user) {
                         FileOutput.writeToFile(output_path, String.format("Command failed\nUser ID: %s\nFilm ID: %s\n\n-----------------------------------------------------------------------------------------------------\n", user_id, command_line[2]),true, false);
@@ -86,7 +90,9 @@ public class MovieDatabaseSys {
                             if (person instanceof User) {
                                 if (person.getId().equals(command_line[1])) {
                                     ((User)person).getRates().put(command_line[2], command_line[3]);
-                                    rated_films.add(command_line[2]);
+                                    if (rated_films.containsKey(user_id)) {
+                                        rated_films.get(user_id).add(command_line[2]);
+                                    }
                                 }
                             }
                         }
@@ -190,7 +196,7 @@ public class MovieDatabaseSys {
                                 else {
                                     rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t(%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n-----------------------------------------------------------------------------------------------------\n\n",theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s\t(%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n",theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, rating),true, false);
                             }
                             else if ((filmList.get(j) instanceof FilmDocumentaries)) {
                                 FilmDocumentaries theFilm = (FilmDocumentaries) filmList.get(j);
@@ -344,9 +350,15 @@ public class MovieDatabaseSys {
                         FileOutput.writeToFile(output_path, String.format("New ratings done successfully\nFilm title: %s\nYour rating: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_title, command_line[4]),true, false);
                     }
                     break;
-                /*
+                
                 case "LIST":
-                    if (command_line[1].equals("USER")) {
+                    StringBuilder command_line_without_last = new StringBuilder();
+                    for (int j = 0; j<command_line.length-1;j++) {
+                        command_line_without_last.append(command_line[j] + " ");
+                    }
+                    command_line_without_last.deleteCharAt(command_line_without_last.length()-1);
+
+                    if (command_line_without_last.substring(0,9).equals("LIST USER")) {
                         String userId = command_line[2];
                         StringBuilder ratings = new StringBuilder();
                         User user = null;
@@ -357,21 +369,25 @@ public class MovieDatabaseSys {
                                 }
                             }
                         }
-                        if (user != null) {
+                        if (user == null) {
+                            ratings.append("Command Failed\nUser ID: " + command_line[2] + "\n");
+                        }
+                        else if (user.getRates().isEmpty()) {
+                            ratings.append("There is not any ratings so far\n");
+                        }
+                        else {
                             for (String filmid : user.getRates().keySet()) {
                                 for (Films film : filmList) {
                                     if (film.id.equals(filmid)) {
-                                        ratings.append(film.title +"\n");
+                                        ratings.append(film.title + ": " + user.getRates().get(film.id) +"\n");
                                     }
                                 }
                             }
                         }
                         
-                        System.out.println(ratings);
-                        
-                        //FileOutput.writeToFile(output_path, String.format("%s\n\n%s", command_line[0], filmList.get(filmList.indexOf(peopleList))), false, false);
-                        */
-                    }
+                        FileOutput.writeToFile(output_path, String.format("%s\n-----------------------------------------------------------------------------------------------------\n", ratings), true, false);
+                    } 
+                }
             }
         }
     }
