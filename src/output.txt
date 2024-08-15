@@ -274,7 +274,6 @@ Directors: Emad Burnat, Guy Davidi
 Stars: Gibreel Burnat, Mohammed Burnat, Yasin Burnat
 Ratings: 8.0/10 from 1 users
 -----------------------------------------------------------------------------------------------------
-
 LIST	ARTISTS	FROM	Turkey
 
 EDIT	RATE	470	222	10
@@ -305,7 +304,6 @@ Directors: Kevin Bright
 Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
 Ratings: 8.0/10 from 1 users
 -----------------------------------------------------------------------------------------------------
-
 RATE	470	100	10
 
 Film rated successfully
@@ -334,7 +332,6 @@ Directors: Kevin Bright
 Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
 Awaiting for votes
 -----------------------------------------------------------------------------------------------------
-
 REMOVE	RATE	470	109
 
 LIST	USER	470	RATES
@@ -368,29 +365,52 @@ Directors: Jack Bender, Stephen Williams
 Stars: Jorge Garcia, Naveen Andrews, Matthew Fox, Josh Holloway, Storm Reid, Noah Jupe, Julian Dennison
 Ratings: 8.5/10 from 4 users
 -----------------------------------------------------------------------------------------------------
-
 LIST	FILMS	BY	COUNTRY	Japan
 
-Coupling (2000-2004)
-4 seasons and 28 episodes
-
-Lost (2004-2010)
-6 seasons and 121 episodes
-
-Friends (1994-2004)
-10 seasons and 236 episodes
+No result
 
 -----------------------------------------------------------------------------------------------------
 LIST	FILMS	BY	COUNTRY	USA
 
-Coupling (2000-2004)
-4 seasons and 28 episodes
+Film title: Plastic_Bag
+18 min
+Language: English
 
-Lost (2004-2010)
-6 seasons and 121 episodes
+Film title: Pulp_Fiction
+154 min
+Language: English
 
-Friends (1994-2004)
-10 seasons and 236 episodes
+Film title: Rear_Window
+112 min
+Language: English
+
+Film title: Lost
+42 min
+Language: English
+
+Film title: Friends
+22 min
+Language: English
+
+Film title: Before_Sunrise
+105 min
+Language: English
+
+Film title: Annie_Hall
+93 min
+Language: English
+
+Film title: Silver_Linings_Playbook
+122 min
+Language: English
+
+Film title: The_Godfather
+175 min
+Language: English
+
+Film title: Fight_Club
+139 min
+Language: English
 
 -----------------------------------------------------------------------------------------------------
 LIST	FEATUREFILMS	BEFORE	1995
@@ -399,15 +419,5 @@ LIST	FEATUREFILMS	BEFORE	1920
 
 LIST	FILMS	BY	RATE	DEGREE
 
-Coupling (2000-2004)
-4 seasons and 28 episodes
-
-Lost (2004-2010)
-6 seasons and 121 episodes
-
-Friends (1994-2004)
-10 seasons and 236 episodes
-
------------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	USA
 
