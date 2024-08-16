@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MovieDatabaseSys {
 
@@ -7,7 +10,8 @@ public class MovieDatabaseSys {
         String[] commands_txt = FileInput.readFile("src\\IO_1\\commands.txt", true, true);
         String[] films_txt = FileInput.readFile("src\\IO_1\\films.txt", true, true);
         String[] people_txt = FileInput.readFile("src\\IO_1\\people.txt", true, true);
-        HashMap<String, ArrayList<String>> rated_films = new HashMap<>();
+        HashMap<String, ArrayList<String>> rated_films_by_user = new HashMap<>();
+        HashMap<String, ArrayList<Integer>> rated_films_by_filmId = new HashMap<>();
         String output_path = "src\\output.txt";
         FileOutput.writeToFile(output_path, "", false, false);
 
@@ -44,15 +48,19 @@ public class MovieDatabaseSys {
             switch (film[0]) {
                 case ("FeatureFilm:"):
                     filmList.add(new FilmFeature(film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8], film[9], film[10], film[11]));
+                    rated_films_by_filmId.put(film[1], new ArrayList<>());
                     break;
                 case ("ShortFilm:"):
                     filmList.add(new FilmShort(film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8], film[9], film[10]));
+                    rated_films_by_filmId.put(film[1], new ArrayList<>());
                     break;
                 case ("TVSeries:"):
                     filmList.add(new FilmTvseries(film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8], film[9], film[10], film[11], film[12], film[13]));
+                    rated_films_by_filmId.put(film[1], new ArrayList<>());
                     break;
                 case ("Documentary:"):
                     filmList.add(new FilmDocumentaries(film[1], film[2], film[3], film[4], film[5], film[6], film[7], film[8]));
+                    rated_films_by_filmId.put(film[1], new ArrayList<>());
                     break;
             }
         }
@@ -72,9 +80,9 @@ public class MovieDatabaseSys {
                             check_id_user = false;
                         }
                     }
-                    if (rated_films.containsKey(user_id)) {
-                        if (rated_films.get(user_id).contains(command_line[2])) { 
-                        check_rated_before = true;
+                    if (rated_films_by_user.containsKey(user_id)) {
+                        if (rated_films_by_user.get(user_id).contains(command_line[2])) { 
+                            check_rated_before = true;
                         }
                     }
                     
@@ -90,9 +98,14 @@ public class MovieDatabaseSys {
                             if (person instanceof User) {
                                 if (person.getId().equals(command_line[1])) {
                                     ((User)person).getRates().put(command_line[2], command_line[3]);
-                                    if (rated_films.containsKey(user_id)) {
-                                        rated_films.get(user_id).add(command_line[2]);
+                                    if (!(rated_films_by_user.containsKey(user_id))) {
+                                        rated_films_by_user.put(user_id, new ArrayList<>());
                                     }
+                                    if (!(rated_films_by_filmId.containsKey(command_line[2]))) {
+                                        rated_films_by_filmId.put(command_line[2], new ArrayList<>());
+                                    }
+                                    rated_films_by_user.get(user_id).add(command_line[2]);
+                                    rated_films_by_filmId.get(command_line[2]).add(Integer.parseInt(command_line[3]));
                                 }
                             }
                         }
@@ -125,6 +138,7 @@ public class MovieDatabaseSys {
 
                     if (check_director && check_id) {
                         filmList.add(new FilmFeature(command_line[2], command_line[3], command_line[4], command_line[5], command_line[6], command_line[7], command_line[8], command_line[9], command_line[10], command_line[11], command_line[12]));
+                        rated_films_by_filmId.put(command_line[2], new ArrayList<>());
                         FileOutput.writeToFile(output_path, String.format("FeatureFilm added successfully\nFilm ID: %s\nFilm title: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_id, command_line[3]),true, false);
                     }
                     else {
@@ -312,7 +326,15 @@ public class MovieDatabaseSys {
                     for (int j = 0; j<peopleList.size(); j++) {
                         if (peopleList.get(j).id.equals(user_to_remove_rate)) {
                             User user = (User) peopleList.get(j);
-                            user.getRates().remove(rate_to_be_removed);
+                            if (user.getRates().containsKey(rate_to_be_removed)) {
+                                Integer rate_number = Integer.parseInt(user.getRates().get(rate_to_be_removed));
+                                user.getRates().remove(rate_to_be_removed);
+                                rated_films_by_user.remove(user.id);
+                                rated_films_by_filmId.get(rate_to_be_removed).remove(rate_number);
+                            }
+                            else {
+                                System.out.println("remove yapılamadı");
+                            }
                         }
                     }
                     break;
@@ -357,7 +379,6 @@ public class MovieDatabaseSys {
                         command_line_without.append(command_line[j] + " ");
                     }
                     command_line_without.deleteCharAt(command_line_without.length()-1);
-                    System.out.println(command_line_without);
 
                     //which command of "LIST"
 
@@ -432,6 +453,98 @@ public class MovieDatabaseSys {
                         }
 
                         FileOutput.writeToFile(output_path, String.valueOf(result) + "-----------------------------------------------------------------------------------------------------\n", true, false);
+                    }
+
+                    //LIST FILMS BY RATE DEGREE
+                    else if (String.valueOf(command_line_without).equals("LIST FILMS BY RATE")) {
+                        System.out.println("aaa");
+                        String[] film_types = {"FilmFeature", "FilmShort", "FilmDocumentaries", "FilmTvseries"};
+                        ArrayList<HashMap<String, String>> ratings = new ArrayList<>();
+                        ratings.add(new HashMap<>());
+                        ratings.add(new HashMap<>());
+                        ratings.add(new HashMap<>());
+                        ratings.add(new HashMap<>());
+
+                        for (int j = 0; j<4; j++) {
+                            String film_type = film_types[j];
+                            double total_rates;
+                            double total_rating_number = 0;
+                            for (String filmId : rated_films_by_filmId.keySet()) {
+                                for (Films film : filmList) {
+                                    if (film.id.equals(filmId) && film.getClass().getName().equals(film_type)) {
+                                        total_rating_number = rated_films_by_filmId.get(filmId).size();
+                                        total_rates = 0;
+                                        for (Integer num : rated_films_by_filmId.get(filmId)) {
+                                            total_rates += num;
+                                        }
+                                        if (total_rating_number == 0) {
+                                            ratings.get(j).put(filmId, "0");
+                                        }
+                                        else {
+                                            ratings.get(j).put(filmId, String.format("%.1f", total_rates/total_rating_number));
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                        System.out.println(rated_films_by_filmId);
+                        System.out.println(ratings);
+
+                        for (int j = 0; j<4; j++) {
+                            StringBuilder result = new StringBuilder();
+                            if (j != 3) {
+                                // HashMap'in değerlerini bir listeye dönüştür
+                                List<Map.Entry<String, String>> entryList = new ArrayList<>(ratings.get(j).entrySet());
+
+                                // String değerleri Double'a dönüştür ve sıralama yap
+                                entryList.sort((e1, e2) -> {
+                                    // ',' yerine '.' kullanarak String'i Double'a dönüştür
+                                    double d1 = Double.parseDouble(e1.getValue().replace(',', '.'));
+                                    double d2 = Double.parseDouble(e2.getValue().replace(',', '.'));
+                                    return Double.compare(d2, d1); // Küçükten büyüğe sıralama
+                                });
+
+                                // Sıralanmış listeyi yeni bir LinkedHashMap'e dönüştür
+                                Map<String, String> sortedMap = new LinkedHashMap<>();
+                                for (Map.Entry<String, String> entry : entryList) {
+                                    sortedMap.put(entry.getKey(), entry.getValue());
+                                }
+
+                                if (j != 0) {
+                                    result.append("\n");
+                                }
+                                result.append(film_types[j] + ":\n");
+                                
+                                for (String film_id2 : sortedMap.keySet()) {
+                                    for (Films film : filmList) {
+                                        if (film.id.equals(film_id2)) {
+                                            result.append(String.format("%s (%s) Ratings: %s/10 from %s users\n", film.title, film.getReleaseDate().substring(6, 10), sortedMap.get(film.id), rated_films_by_filmId.get(film.id).size()));
+                                        }
+                                    }
+                                }
+                            }
+                            FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
+                        }
+                        // HashMap'in değerlerini bir listeye dönüştür
+                        List<Map.Entry<String, String>> entryList = new ArrayList<>(ratings.get(0).entrySet());
+
+                        // String değerleri Double'a dönüştür ve sıralama yap
+                        entryList.sort((e1, e2) -> {
+                            // ',' yerine '.' kullanarak String'i Double'a dönüştür
+                            double d1 = Double.parseDouble(e1.getValue().replace(',', '.'));
+                            double d2 = Double.parseDouble(e2.getValue().replace(',', '.'));
+                            return Double.compare(d2, d1); // Küçükten büyüğe sıralama
+                        });
+
+                        // Sıralanmış listeyi yeni bir LinkedHashMap'e dönüştür
+                        Map<String, String> sortedMap = new LinkedHashMap<>();
+                        for (Map.Entry<String, String> entry : entryList) {
+                            sortedMap.put(entry.getKey(), entry.getValue());
+                        }
+
+                        // Sonucu ekrana yazdır
+                        System.out.println(sortedMap);
                     }
                 }
             }

@@ -7,9 +7,7 @@ Film title: Amelie
 -----------------------------------------------------------------------------------------------------
 RATE	470	113	9
 
-Film rated successfully
-Film Type: FilmFeature
-Film title: Amelie
+This film was earlier rated
 
 -----------------------------------------------------------------------------------------------------
 RATE	454	113	8
@@ -419,5 +417,23 @@ LIST	FEATUREFILMS	BEFORE	1920
 
 LIST	FILMS	BY	RATE	DEGREE
 
+FilmFeature:
+The_Godfather (1973) Ratings: 9,7/10 from 3 users
+La_meglio_gioventu (2003) Ratings: 9,5/10 from 2 users
+Pulp_Fiction (1994) Ratings: 9,0/10 from 1 users
+Before_Sunrise (1995) Ratings: 9,0/10 from 1 users
+Fight_Club (1999) Ratings: 8,8/10 from 5 users
+Amelie (2001) Ratings: 8,5/10 from 2 users
+Biyeolhan_Geori (2006) Ratings: 8,0/10 from 2 users
+Silver_Linings_Playbook (2013) Ratings: 8,0/10 from 1 users
+Annie_Hall (1977) Ratings: 0/10 from 0 users
+Rear_Window (1956) Ratings: 0/10 from 0 users
+
+FilmShort:
+Plastic_Bag (2009) Ratings: 6,0/10 from 1 users
+
+FilmDocumentaries:
+5_Broken_Cameras (2013) Ratings: 8,0/10 from 1 users
+Gelibolu (2005) Ratings: 0/10 from 0 users
 LIST	ARTISTS	FROM	USA
 
