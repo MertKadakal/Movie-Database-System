@@ -524,27 +524,36 @@ public class MovieDatabaseSys {
                                     }
                                 }
                             }
+                            else {
+                                result.append("\n" + film_types[3] + ":\n");
+                                // HashMap'in değerlerini bir listeye dönüştür
+                                List<Map.Entry<String, String>> entryList = new ArrayList<>(ratings.get(3).entrySet());
+
+                                // String değerleri Double'a dönüştür ve sıralama yap
+                                entryList.sort((e1, e2) -> {
+                                    // ',' yerine '.' kullanarak String'i Double'a dönüştür
+                                    double d1 = Double.parseDouble(e1.getValue().replace(',', '.'));
+                                    double d2 = Double.parseDouble(e2.getValue().replace(',', '.'));
+                                    return Double.compare(d2, d1); // Küçükten büyüğe sıralama
+                                });
+
+                                // Sıralanmış listeyi yeni bir LinkedHashMap'e dönüştür
+                                Map<String, String> sortedMap = new LinkedHashMap<>();
+                                for (Map.Entry<String, String> entry : entryList) {
+                                    sortedMap.put(entry.getKey(), entry.getValue());
+                                }
+
+                                for (String film_id2 : sortedMap.keySet()) {
+                                    for (Films film : filmList) {
+                                        if (film.id.equals(film_id2)) {
+                                            result.append(String.format("%s (%s-%s) Ratings: %s/10 from %s users\n", film.title, ((FilmTvseries)film).getStartDate().substring(6, 10), ((FilmTvseries)film).getEndDate().substring(6, 10), sortedMap.get(film.id), rated_films_by_filmId.get(film.id).size()));
+                                        }
+                                    }
+                                }
+                            }
                             FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
                         }
-                        // HashMap'in değerlerini bir listeye dönüştür
-                        List<Map.Entry<String, String>> entryList = new ArrayList<>(ratings.get(0).entrySet());
-
-                        // String değerleri Double'a dönüştür ve sıralama yap
-                        entryList.sort((e1, e2) -> {
-                            // ',' yerine '.' kullanarak String'i Double'a dönüştür
-                            double d1 = Double.parseDouble(e1.getValue().replace(',', '.'));
-                            double d2 = Double.parseDouble(e2.getValue().replace(',', '.'));
-                            return Double.compare(d2, d1); // Küçükten büyüğe sıralama
-                        });
-
-                        // Sıralanmış listeyi yeni bir LinkedHashMap'e dönüştür
-                        Map<String, String> sortedMap = new LinkedHashMap<>();
-                        for (Map.Entry<String, String> entry : entryList) {
-                            sortedMap.put(entry.getKey(), entry.getValue());
-                        }
-
-                        // Sonucu ekrana yazdır
-                        System.out.println(sortedMap);
+                        FileOutput.writeToFile(output_path, "\n-----------------------------------------------------------------------------------------------------\n", true, false);
                     }
                 }
             }

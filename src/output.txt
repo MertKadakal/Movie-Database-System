@@ -435,5 +435,12 @@ Plastic_Bag (2009) Ratings: 6,0/10 from 1 users
 FilmDocumentaries:
 5_Broken_Cameras (2013) Ratings: 8,0/10 from 1 users
 Gelibolu (2005) Ratings: 0/10 from 0 users
+
+FilmTvseries:
+Coupling (2000-2004) Ratings: 9,5/10 from 2 users
+Lost (2004-2010) Ratings: 8,5/10 from 4 users
+Friends (1994-2004) Ratings: 0/10 from 0 users
+
+-----------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	USA
 
