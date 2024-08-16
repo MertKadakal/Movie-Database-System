@@ -264,13 +264,12 @@ Film ID: 109
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	103
 
-VIEWFILM	103
-
 5_Broken_Cameras	(2013)
 
 Directors: Emad Burnat, Guy Davidi
 Stars: Gibreel Burnat, Mohammed Burnat, Yasin Burnat
 Ratings: 8.0/10 from 1 users
+
 -----------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	Turkey
 
@@ -299,6 +298,31 @@ Film ID: 222
 -----------------------------------------------------------------------------------------------------
 LIST	FEATUREFILMS	AFTER	1995
 
+Film title: La_meglio_gioventu (2003)
+180 min
+Language: Italian
+
+Film title: Before_Sunrise (1995)
+105 min
+Language: English
+
+Film title: Biyeolhan_Geori (2006)
+141 min
+Language: Korean
+
+Film title: Silver_Linings_Playbook (2013)
+122 min
+Language: English
+
+Film title: Amelie (2001)
+122 min
+Language: French
+
+Film title: Fight_Club (1999)
+139 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
 EDIT	RATE	475	109	10
 
 Command failed
@@ -308,8 +332,6 @@ Film ID: 109
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	108
 
-VIEWFILM	108
-
 Friends	(1994-2004)
 10 seasons, 236 episodes
 Comedy, Romance
@@ -317,6 +339,7 @@ Writers: David Crane, Marta Kauffman, Mihael Curtis
 Directors: Kevin Bright
 Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
 Ratings: 8.0/10 from 1 users
+
 -----------------------------------------------------------------------------------------------------
 RATE	470	100	10
 
@@ -334,8 +357,10 @@ Film title: Amelie
 -----------------------------------------------------------------------------------------------------
 REMOVE	RATE	470	108
 
-VIEWFILM	108
+Your film rating was removed successfully
+Film title: Friends
 
+-----------------------------------------------------------------------------------------------------
 VIEWFILM	108
 
 Friends	(1994-2004)
@@ -345,9 +370,15 @@ Writers: David Crane, Marta Kauffman, Mihael Curtis
 Directors: Kevin Bright
 Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
 Awaiting for votes
+
 -----------------------------------------------------------------------------------------------------
 REMOVE	RATE	470	109
 
+Command Failed
+User ID: 470
+Film ID: 109
+
+-----------------------------------------------------------------------------------------------------
 LIST	USER	470	RATES
 
 La_meglio_gioventu: 10
@@ -369,8 +400,6 @@ Friends (1994-2004)
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	106
 
-VIEWFILM	106
-
 Lost	(2004-2010)
 6 seasons, 121 episodes
 Adventure, Drama, Fantasy
@@ -378,6 +407,7 @@ Writers: Damon Lindelof, Carlton Cuse, Edward Kitsis, Adam Horowitz, Elizabeth S
 Directors: Jack Bender, Stephen Williams
 Stars: Jorge Garcia, Naveen Andrews, Matthew Fox, Josh Holloway, Storm Reid, Noah Jupe, Julian Dennison
 Ratings: 8.5/10 from 4 users
+
 -----------------------------------------------------------------------------------------------------
 LIST	FILMS	BY	COUNTRY	Japan
 
@@ -429,8 +459,28 @@ Language: English
 -----------------------------------------------------------------------------------------------------
 LIST	FEATUREFILMS	BEFORE	1995
 
+Film title: Pulp_Fiction (1994)
+154 min
+Language: English
+
+Film title: Rear_Window (1956)
+112 min
+Language: English
+
+Film title: Annie_Hall (1977)
+93 min
+Language: English
+
+Film title: The_Godfather (1973)
+175 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
 LIST	FEATUREFILMS	BEFORE	1920
 
+No result
+
+-----------------------------------------------------------------------------------------------------
 LIST	FILMS	BY	RATE	DEGREE
 
 FilmFeature:

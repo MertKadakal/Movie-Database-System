@@ -256,7 +256,7 @@ public class MovieDatabaseSys {
                                 else {
                                     rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s)\n\nDirectors: %s\nStars: %s\n%s\n-----------------------------------------------------------------------------------------------------\n", command_line[0], theFilm.id, theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s\t(%s)\n\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n", theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, rating),true, false);
                             }
                             else if ((filmList.get(j) instanceof FilmTvseries)) {
                                 FilmTvseries theFilm = (FilmTvseries) filmList.get(j);
@@ -313,7 +313,7 @@ public class MovieDatabaseSys {
                                 else {
                                     rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t%s\n\n%s\t(%s-%s)\n%s seasons, %s episodes\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n-----------------------------------------------------------------------------------------------------\n", command_line[0], theFilm.id, theFilm.title, theFilm.getStartDate().substring(6, 10), theFilm.getEndDate().substring(6, 10), theFilm.getSeasonNumber(), theFilm.getEpisodeNumber(), theFilm.getGenre().replace(",", ", "), tem_writers, tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s\t(%s-%s)\n%s seasons, %s episodes\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n", theFilm.title, theFilm.getStartDate().substring(6, 10), theFilm.getEndDate().substring(6, 10), theFilm.getSeasonNumber(), theFilm.getEpisodeNumber(), theFilm.getGenre().replace(",", ", "), tem_writers, tem_directors, tem_stars, rating),true, false);
                             }
                             break;
                         }
@@ -327,13 +327,19 @@ public class MovieDatabaseSys {
                         if (peopleList.get(j).id.equals(user_to_remove_rate)) {
                             User user = (User) peopleList.get(j);
                             if (user.getRates().containsKey(rate_to_be_removed)) {
+                                for (Films film : filmList) {
+                                    if (film.id.equals(rate_to_be_removed)) {
+                                        FileOutput.writeToFile(output_path, "Your film rating was removed successfully\nFilm title: " + film.title + "\n\n-----------------------------------------------------------------------------------------------------\n", true, false);
+                                    }
+                                }
+                                
                                 Integer rate_number = Integer.parseInt(user.getRates().get(rate_to_be_removed));
                                 user.getRates().remove(rate_to_be_removed);
                                 rated_films_by_user.remove(user.id);
                                 rated_films_by_filmId.get(rate_to_be_removed).remove(rate_number);
                             }
                             else {
-                                System.out.println("remove yapılamadı");
+                                FileOutput.writeToFile(output_path, String.format("Command Failed\nUser ID: %s\nFilm ID: %s", command_line[2], command_line[3]) + "\n\n-----------------------------------------------------------------------------------------------------\n", true, false);
                             }
                         }
                     }
@@ -410,7 +416,7 @@ public class MovieDatabaseSys {
                             }
                         }
                         
-                        FileOutput.writeToFile(output_path, String.format("%s\n-----------------------------------------------------------------------------------------------------\n", ratings), true, false);
+                        FileOutput.writeToFile(output_path, String.format("%s\n", ratings), true, false);
                     }
                     
                     //LIST FILMS BY COUNTRY
@@ -428,7 +434,7 @@ public class MovieDatabaseSys {
                             result.append("No result\n\n");
                         }
 
-                        FileOutput.writeToFile(output_path, String.valueOf(result) + "-----------------------------------------------------------------------------------------------------\n", true, false);
+                        FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
                     }
                     
                     //LIST FILM SERIES
@@ -452,7 +458,7 @@ public class MovieDatabaseSys {
                             }
                         }
 
-                        FileOutput.writeToFile(output_path, String.valueOf(result) + "-----------------------------------------------------------------------------------------------------\n", true, false);
+                        FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
                     }
 
                     //LIST FILMS BY RATE DEGREE
@@ -533,7 +539,7 @@ public class MovieDatabaseSys {
                                 FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
                             }
                         }
-                        FileOutput.writeToFile(output_path, "\n-----------------------------------------------------------------------------------------------------\n", true, false);
+                        FileOutput.writeToFile(output_path, "\n", true, false);
                     }
 
                     //LIST ARTISTS FROM
@@ -573,8 +579,29 @@ public class MovieDatabaseSys {
                                 FileOutput.writeToFile(output_path, String.valueOf(result) + "\n", true, false);
                             }
                         }
-                        FileOutput.writeToFile(output_path, "-----------------------------------------------------------------------------------------------------\n", true, false);
                     }
+
+                    //LIST FEATUREFILMS AFTER - BEFORE
+                    else if (String.valueOf(command_line_without).split(" ")[1].equals("FEATUREFILMS")) {
+                        int date = Integer.parseInt(command_line[3]);
+                        StringBuilder result = new StringBuilder();
+                        boolean added = true;
+                        for (Films film : filmList) {
+                            if (film.getClass().getName().equals("FilmFeature")) {
+                                if ((String.valueOf(command_line_without).split(" ")[2].equals("AFTER") && Integer.parseInt(film.getReleaseDate().substring(6)) >= date) || (String.valueOf(command_line_without).split(" ")[2].equals("BEFORE") && Integer.parseInt(film.getReleaseDate().substring(6)) < date)) {
+                                    result.append(String.format("Film title: %s (%s)\n%s min\nLanguage: %s\n\n", film.title, film.getReleaseDate().substring(6), film.runtime, film.language));
+                                    added = false;
+                                }
+                            }
+                        }
+                        if (added) {
+                            FileOutput.writeToFile(output_path, "No result\n\n", true, false);
+                        }
+                        else {
+                            FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
+                        }
+                    }
+                    FileOutput.writeToFile(output_path, "-----------------------------------------------------------------------------------------------------\n", true, false);
                 }
             }
         }
