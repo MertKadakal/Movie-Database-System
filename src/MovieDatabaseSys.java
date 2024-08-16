@@ -457,7 +457,6 @@ public class MovieDatabaseSys {
 
                     //LIST FILMS BY RATE DEGREE
                     else if (String.valueOf(command_line_without).equals("LIST FILMS BY RATE")) {
-                        System.out.println("aaa");
                         String[] film_types = {"FilmFeature", "FilmShort", "FilmDocumentaries", "FilmTvseries"};
                         ArrayList<HashMap<String, String>> ratings = new ArrayList<>();
                         ratings.add(new HashMap<>());
@@ -488,72 +487,93 @@ public class MovieDatabaseSys {
                                 
                             }
                         }
-                        System.out.println(rated_films_by_filmId);
-                        System.out.println(ratings);
 
                         for (int j = 0; j<4; j++) {
                             StringBuilder result = new StringBuilder();
-                            if (j != 3) {
-                                // HashMap'in değerlerini bir listeye dönüştür
-                                List<Map.Entry<String, String>> entryList = new ArrayList<>(ratings.get(j).entrySet());
+                            // HashMap'in değerlerini bir listeye dönüştür
+                            List<Map.Entry<String, String>> entryList = new ArrayList<>(ratings.get(j).entrySet());
 
-                                // String değerleri Double'a dönüştür ve sıralama yap
-                                entryList.sort((e1, e2) -> {
-                                    // ',' yerine '.' kullanarak String'i Double'a dönüştür
-                                    double d1 = Double.parseDouble(e1.getValue().replace(',', '.'));
-                                    double d2 = Double.parseDouble(e2.getValue().replace(',', '.'));
-                                    return Double.compare(d2, d1); // Küçükten büyüğe sıralama
-                                });
+                            // String değerleri Double'a dönüştür ve sıralama yap
+                            entryList.sort((e1, e2) -> {
+                                // ',' yerine '.' kullanarak String'i Double'a dönüştür
+                                double d1 = Double.parseDouble(e1.getValue().replace(',', '.'));
+                                double d2 = Double.parseDouble(e2.getValue().replace(',', '.'));
+                                return Double.compare(d2, d1); // Küçükten büyüğe sıralama
+                            });
 
-                                // Sıralanmış listeyi yeni bir LinkedHashMap'e dönüştür
-                                Map<String, String> sortedMap = new LinkedHashMap<>();
-                                for (Map.Entry<String, String> entry : entryList) {
-                                    sortedMap.put(entry.getKey(), entry.getValue());
-                                }
-
-                                if (j != 0) {
-                                    result.append("\n");
-                                }
-                                result.append(film_types[j] + ":\n");
-                                
-                                for (String film_id2 : sortedMap.keySet()) {
-                                    for (Films film : filmList) {
-                                        if (film.id.equals(film_id2)) {
-                                            result.append(String.format("%s (%s) Ratings: %s/10 from %s users\n", film.title, film.getReleaseDate().substring(6, 10), sortedMap.get(film.id), rated_films_by_filmId.get(film.id).size()));
-                                        }
-                                    }
-                                }
+                            // Sıralanmış listeyi yeni bir LinkedHashMap'e dönüştür
+                            Map<String, String> sortedMap = new LinkedHashMap<>();
+                            for (Map.Entry<String, String> entry : entryList) {
+                                sortedMap.put(entry.getKey(), entry.getValue());
                             }
-                            else {
-                                result.append("\n" + film_types[3] + ":\n");
-                                // HashMap'in değerlerini bir listeye dönüştür
-                                List<Map.Entry<String, String>> entryList = new ArrayList<>(ratings.get(3).entrySet());
 
-                                // String değerleri Double'a dönüştür ve sıralama yap
-                                entryList.sort((e1, e2) -> {
-                                    // ',' yerine '.' kullanarak String'i Double'a dönüştür
-                                    double d1 = Double.parseDouble(e1.getValue().replace(',', '.'));
-                                    double d2 = Double.parseDouble(e2.getValue().replace(',', '.'));
-                                    return Double.compare(d2, d1); // Küçükten büyüğe sıralama
-                                });
-
-                                // Sıralanmış listeyi yeni bir LinkedHashMap'e dönüştür
-                                Map<String, String> sortedMap = new LinkedHashMap<>();
-                                for (Map.Entry<String, String> entry : entryList) {
-                                    sortedMap.put(entry.getKey(), entry.getValue());
-                                }
-
-                                for (String film_id2 : sortedMap.keySet()) {
-                                    for (Films film : filmList) {
-                                        if (film.id.equals(film_id2)) {
+                            if (j != 0) {
+                                result.append("\n");
+                            }
+                            result.append(film_types[j] + ":\n");
+                            
+                            boolean added = true;
+                            for (String film_id2 : sortedMap.keySet()) {
+                                for (Films film : filmList) {
+                                    if (film.id.equals(film_id2)) {
+                                        if (j == 3) {
                                             result.append(String.format("%s (%s-%s) Ratings: %s/10 from %s users\n", film.title, ((FilmTvseries)film).getStartDate().substring(6, 10), ((FilmTvseries)film).getEndDate().substring(6, 10), sortedMap.get(film.id), rated_films_by_filmId.get(film.id).size()));
                                         }
+                                        else {
+                                            result.append(String.format("%s (%s) Ratings: %s/10 from %s users\n", film.title, film.getReleaseDate().substring(6, 10), sortedMap.get(film.id), rated_films_by_filmId.get(film.id).size()));
+                                        }
+                                        added = false;
                                     }
                                 }
                             }
-                            FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
+                            if (added) {
+                                FileOutput.writeToFile(output_path, String.valueOf(result) + "No result", true, false);
+                            }
+                            else {
+                                FileOutput.writeToFile(output_path, String.valueOf(result), true, false);
+                            }
                         }
                         FileOutput.writeToFile(output_path, "\n-----------------------------------------------------------------------------------------------------\n", true, false);
+                    }
+
+                    //LIST ARTISTS FROM
+                    else if (String.valueOf(command_line_without).equals("LIST ARTISTS FROM")) {
+                        String[] artists = {"ArtistDirector", "ArtistWriter", "ArtistPerformerActor", "ArtistPerformerChildActor", "ArtistPerformerStuntPerformer"};
+                        String country = command_line[3];
+
+                        for (int j=0; j<5; j++) {
+                            StringBuilder result = new StringBuilder();
+                            
+                            boolean added = true;
+                            result.append(artists[j] + ":\n");
+                            for (Person person : peopleList) {
+                                if (person.getClass().getName().equals(artists[j]) && person.country.equals(country)) {
+                                    if (artists[j].equals("ArtistDirector")) {
+                                        result.append(String.format("%s %s %s\n", person.name, person.surname, ((ArtistDirector) person).getAgent()));
+                                    }
+                                    if (artists[j].equals("ArtistWriter")) {
+                                        result.append(String.format("%s %s %s\n", person.name, person.surname, ((ArtistWriter) person).getWritingStyle()));
+                                    }
+                                    if (artists[j].equals("ArtistPerformerActor")) {
+                                        result.append(String.format("%s %s %s cm\n", person.name, person.surname, ((ArtistPerformerActor) person).getHeight()));
+                                    }
+                                    if (artists[j].equals("ArtistPerformerChildActor")) {
+                                        result.append(String.format("%s %s %s\n", person.name, person.surname, ((ArtistPerformerChildActor) person).getAge()));
+                                    }
+                                    if (artists[j].equals("ArtistPerformerStuntPerformer")) {
+                                        result.append(String.format("%s %s %s cm\n", person.name, person.surname, ((ArtistPerformerStuntPerformer) person).getHeight()));
+                                    }
+                                    added = false;
+                                }
+                            }
+                            if (added) {
+                                FileOutput.writeToFile(output_path, String.valueOf(result) + "No result\n\n", true, false);
+                            }
+                            else {
+                                FileOutput.writeToFile(output_path, String.valueOf(result) + "\n", true, false);
+                            }
+                        }
+                        FileOutput.writeToFile(output_path, "-----------------------------------------------------------------------------------------------------\n", true, false);
                     }
                 }
             }

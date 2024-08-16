@@ -274,6 +274,22 @@ Ratings: 8.0/10 from 1 users
 -----------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	Turkey
 
+ArtistDirector:
+Tolga Ornek Tolga
+
+ArtistWriter:
+No result
+
+ArtistPerformerActor:
+Zafer Ergin 178 cm
+
+ArtistPerformerChildActor:
+No result
+
+ArtistPerformerStuntPerformer:
+No result
+
+-----------------------------------------------------------------------------------------------------
 EDIT	RATE	470	222	10
 
 Command failed
@@ -444,3 +460,74 @@ Friends (1994-2004) Ratings: 0/10 from 0 users
 -----------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	USA
 
+ArtistDirector:
+Ramin Bahrani Ramin
+Quentin Tarantino Simpson-Morris
+Alfred Hitchcock Hitchcock
+Jack Bender Abrams
+Kevin Bright Crane
+Richard Linklater Richard
+Woody Allen Allen
+David O.Russell Russell
+Francis-Ford Coppola Coppola
+David Fincher Fincher
+
+ArtistWriter:
+Jenni Jenkins Drama
+John M.Hayes Mystery
+Cornell Woolrich Thriller
+Damon Lindelof Mystery
+Carlton Cuse Adventure
+Edward Kitsis Drama
+Adam Horowitz Fantasy
+Elizabeth Sarnoff Adventure
+David Crane Romance
+Marta Kauffman Romance
+Mihael Curtis Comedy
+Kim Krizan Romance
+Matthew Quick Comedy
+Mario Puzo Crime
+Chuck Palahniuk Fiction
+Jim Uhls Drama
+
+ArtistPerformerActor:
+John Travolta 188 cm
+Samuel L.Jackson 189 cm
+James Stewart 191 cm
+Wendell Corey 187 cm
+Jorge Garcia 183 cm
+Matthew Fox 188 cm
+Josh Holloway 187 cm
+Demetri Goritsas 183 cm
+Matt LeBlanc 178 cm
+Matthew Perry 183 cm
+David Schwimmer 185 cm
+Ethan Hawke 180 cm
+Tony Roberts 185 cm
+Bradley Cooper 185 cm
+Robert DeNiro 177 cm
+Marlon Brando 175 cm
+Al Pacino 170 cm
+James Caan 176 cm
+Robert Duvall 174 cm
+Edward Norton 183 cm
+Brad Pitt 180 cm
+
+ArtistPerformerChildActor:
+Noah Schnapp 17
+Jack Grazer 18
+Elsie Fisher 18
+Noelle Sheldon 29
+Cali Sheldon 29
+Dakota Fanning 27
+Aidan Gallagher 18
+Judah Lewis 20
+Skylar Gaertner 17
+
+ArtistPerformerStuntPerformer:
+Hal Needham 180 cm
+Buster Keaton 165 cm
+Joi Harris 175 cm
+John Bernecker 185 cm
+
+-----------------------------------------------------------------------------------------------------
