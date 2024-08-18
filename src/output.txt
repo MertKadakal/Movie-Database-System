@@ -1,7 +1,7 @@
 RATE	470	113	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Amelie
 
 -----------------------------------------------------------------------------------------------------
@@ -12,7 +12,7 @@ This film was earlier rated
 -----------------------------------------------------------------------------------------------------
 RATE	454	113	8
 
-Command failed
+Command Failed
 User ID: 454
 Film ID: 113
 
@@ -41,192 +41,192 @@ Film title: Right_Club
 RATE	475	115	10
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	477	115	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	480	111	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Biyeolhan_Geori
 
 -----------------------------------------------------------------------------------------------------
 RATE	477	111	7
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Biyeolhan_Geori
 
 -----------------------------------------------------------------------------------------------------
 RATE	476	114	10
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: The_Godfather
 
 -----------------------------------------------------------------------------------------------------
 RATE	474	114	10
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: The_Godfather
 
 -----------------------------------------------------------------------------------------------------
 RATE	473	114	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: The_Godfather
 
 -----------------------------------------------------------------------------------------------------
 RATE	472	112	8
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Silver_Linings_Playbook
 
 -----------------------------------------------------------------------------------------------------
 RATE	472	103	8
 
 Film rated successfully
-Film Type: FilmDocumentaries
+Film type: Documentary
 Film title: 5_Broken_Cameras
 
 -----------------------------------------------------------------------------------------------------
 RATE	472	101	6
 
 Film rated successfully
-Film Type: FilmShort
+Film type: ShortFilm
 Film title: Plastic_Bag
 
 -----------------------------------------------------------------------------------------------------
 RATE	471	102	10
 
 Film rated successfully
-Film Type: FilmTvseries
+Film type: TVSeries
 Film title: Coupling
 
 -----------------------------------------------------------------------------------------------------
 RATE	479	102	9
 
 Film rated successfully
-Film Type: FilmTvseries
+Film type: TVSeries
 Film title: Coupling
 
 -----------------------------------------------------------------------------------------------------
 RATE	478	100	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: La_meglio_gioventu
 
 -----------------------------------------------------------------------------------------------------
 RATE	478	109	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Before_Sunrise
 
 -----------------------------------------------------------------------------------------------------
 RATE	476	104	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Pulp_Fiction
 
 -----------------------------------------------------------------------------------------------------
 RATE	473	106	9
 
 Film rated successfully
-Film Type: FilmTvseries
+Film type: TVSeries
 Film title: Lost
 
 -----------------------------------------------------------------------------------------------------
 RATE	472	106	8
 
 Film rated successfully
-Film Type: FilmTvseries
+Film type: TVSeries
 Film title: Lost
 
 -----------------------------------------------------------------------------------------------------
 RATE	471	106	7
 
 Film rated successfully
-Film Type: FilmTvseries
+Film type: TVSeries
 Film title: Lost
 
 -----------------------------------------------------------------------------------------------------
 RATE	478	106	10
 
 Film rated successfully
-Film Type: FilmTvseries
+Film type: TVSeries
 Film title: Lost
 
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	115
 
-Fight_Club	(1999)
+Fight_Club (1999)
 Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 9.5/10 from 2 users
+Ratings: 9,5/10 from 2 users
 
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	101
 
-Plastic_Bag	(2009)
+Plastic_Bag (2009)
 Drama
 Writers: Jenni Jenkins
 Directors: Ramin Bahrani
 Stars: Werner Herzog, Jaeden Martell
-Ratings: 6.0/10 from 1 users
+Ratings: 6/10 from 1 users
 
 -----------------------------------------------------------------------------------------------------
 RATE	470	115	9
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	479	115	8
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	478	115	8
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Fight_Club
 
 -----------------------------------------------------------------------------------------------------
 RATE	470	108	8
 
 Film rated successfully
-Film Type: FilmTvseries
+Film type: TVSeries
 Film title: Friends
 
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	115
 
-Fight_Club	(1999)
+Fight_Club (1999)
 Drama
 Writers: Chuck Palahniuk, Jim Uhls
 Directors: David Fincher
 Stars: Edward Norton, Brad Pitt
-Ratings: 8.8/10 from 5 users
+Ratings: 8,8/10 from 5 users
 
 -----------------------------------------------------------------------------------------------------
 LIST	USER	470	RATES
@@ -257,41 +257,41 @@ Your rating: 10
 -----------------------------------------------------------------------------------------------------
 EDIT	RATE	470	109	10
 
-Command failed
+Command Failed
 User ID: 470
 Film ID: 109
 
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	103
 
-5_Broken_Cameras	(2013)
+5_Broken_Cameras (2013)
 
 Directors: Emad Burnat, Guy Davidi
 Stars: Gibreel Burnat, Mohammed Burnat, Yasin Burnat
-Ratings: 8.0/10 from 1 users
+Ratings: 8/10 from 1 users
 
 -----------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	Turkey
 
-ArtistDirector:
+Directors:
 Tolga Ornek Tolga
 
-ArtistWriter:
+Writers:
 No result
 
-ArtistPerformerActor:
+Actors:
 Zafer Ergin 178 cm
 
-ArtistPerformerChildActor:
+ChildActors:
 No result
 
-ArtistPerformerStuntPerformer:
+StuntPerformers:
 No result
 
 -----------------------------------------------------------------------------------------------------
 EDIT	RATE	470	222	10
 
-Command failed
+Command Failed
 User ID: 470
 Film ID: 222
 
@@ -325,33 +325,33 @@ Language: English
 -----------------------------------------------------------------------------------------------------
 EDIT	RATE	475	109	10
 
-Command failed
+Command Failed
 User ID: 475
 Film ID: 109
 
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	108
 
-Friends	(1994-2004)
+Friends (1994-2004)
 10 seasons, 236 episodes
 Comedy, Romance
 Writers: David Crane, Marta Kauffman, Mihael Curtis
 Directors: Kevin Bright
 Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
-Ratings: 8.0/10 from 1 users
+Ratings: 8/10 from 1 users
 
 -----------------------------------------------------------------------------------------------------
 RATE	470	100	10
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: La_meglio_gioventu
 
 -----------------------------------------------------------------------------------------------------
 RATE	473	113	8
 
 Film rated successfully
-Film Type: FilmFeature
+Film type: FeatureFilm
 Film title: Amelie
 
 -----------------------------------------------------------------------------------------------------
@@ -363,7 +363,7 @@ Film title: Friends
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	108
 
-Friends	(1994-2004)
+Friends (1994-2004)
 10 seasons, 236 episodes
 Comedy, Romance
 Writers: David Crane, Marta Kauffman, Mihael Curtis
@@ -400,13 +400,13 @@ Friends (1994-2004)
 -----------------------------------------------------------------------------------------------------
 VIEWFILM	106
 
-Lost	(2004-2010)
+Lost (2004-2010)
 6 seasons, 121 episodes
 Adventure, Drama, Fantasy
 Writers: Damon Lindelof, Carlton Cuse, Edward Kitsis, Adam Horowitz, Elizabeth Sarnoff
 Directors: Jack Bender, Stephen Williams
 Stars: Jorge Garcia, Naveen Andrews, Matthew Fox, Josh Holloway, Storm Reid, Noah Jupe, Julian Dennison
-Ratings: 8.5/10 from 4 users
+Ratings: 8,5/10 from 4 users
 
 -----------------------------------------------------------------------------------------------------
 LIST	FILMS	BY	COUNTRY	Japan
@@ -483,26 +483,26 @@ No result
 -----------------------------------------------------------------------------------------------------
 LIST	FILMS	BY	RATE	DEGREE
 
-FilmFeature:
+FeatureFilm:
 The_Godfather (1973) Ratings: 9,7/10 from 3 users
 La_meglio_gioventu (2003) Ratings: 9,5/10 from 2 users
-Pulp_Fiction (1994) Ratings: 9,0/10 from 1 users
-Before_Sunrise (1995) Ratings: 9,0/10 from 1 users
+Pulp_Fiction (1994) Ratings: 9/10 from 1 users
+Before_Sunrise (1995) Ratings: 9/10 from 1 users
 Fight_Club (1999) Ratings: 8,8/10 from 5 users
 Amelie (2001) Ratings: 8,5/10 from 2 users
-Biyeolhan_Geori (2006) Ratings: 8,0/10 from 2 users
-Silver_Linings_Playbook (2013) Ratings: 8,0/10 from 1 users
+Biyeolhan_Geori (2006) Ratings: 8/10 from 2 users
+Silver_Linings_Playbook (2013) Ratings: 8/10 from 1 users
 Annie_Hall (1977) Ratings: 0/10 from 0 users
 Rear_Window (1956) Ratings: 0/10 from 0 users
 
-FilmShort:
-Plastic_Bag (2009) Ratings: 6,0/10 from 1 users
+ShortFilm:
+Plastic_Bag (2009) Ratings: 6/10 from 1 users
 
-FilmDocumentaries:
-5_Broken_Cameras (2013) Ratings: 8,0/10 from 1 users
+Documentary:
+5_Broken_Cameras (2013) Ratings: 8/10 from 1 users
 Gelibolu (2005) Ratings: 0/10 from 0 users
 
-FilmTvseries:
+TVSeries:
 Coupling (2000-2004) Ratings: 9,5/10 from 2 users
 Lost (2004-2010) Ratings: 8,5/10 from 4 users
 Friends (1994-2004) Ratings: 0/10 from 0 users
@@ -510,7 +510,7 @@ Friends (1994-2004) Ratings: 0/10 from 0 users
 -----------------------------------------------------------------------------------------------------
 LIST	ARTISTS	FROM	USA
 
-ArtistDirector:
+Directors:
 Ramin Bahrani Ramin
 Quentin Tarantino Simpson-Morris
 Alfred Hitchcock Hitchcock
@@ -522,7 +522,7 @@ David O.Russell Russell
 Francis-Ford Coppola Coppola
 David Fincher Fincher
 
-ArtistWriter:
+Writers:
 Jenni Jenkins Drama
 John M.Hayes Mystery
 Cornell Woolrich Thriller
@@ -540,7 +540,7 @@ Mario Puzo Crime
 Chuck Palahniuk Fiction
 Jim Uhls Drama
 
-ArtistPerformerActor:
+Actors:
 John Travolta 188 cm
 Samuel L.Jackson 189 cm
 James Stewart 191 cm
@@ -563,7 +563,7 @@ Robert Duvall 174 cm
 Edward Norton 183 cm
 Brad Pitt 180 cm
 
-ArtistPerformerChildActor:
+ChildActors:
 Noah Schnapp 17
 Jack Grazer 18
 Elsie Fisher 18
@@ -574,7 +574,7 @@ Aidan Gallagher 18
 Judah Lewis 20
 Skylar Gaertner 17
 
-ArtistPerformerStuntPerformer:
+StuntPerformers:
 Hal Needham 180 cm
 Buster Keaton 165 cm
 Joi Harris 175 cm

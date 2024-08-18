@@ -12,6 +12,8 @@ public class MovieDatabaseSys {
         String[] people_txt = FileInput.readFile("src\\IO_1\\people.txt", true, true);
         HashMap<String, ArrayList<String>> rated_films_by_user = new HashMap<>();
         HashMap<String, ArrayList<Integer>> rated_films_by_filmId = new HashMap<>();
+        Map<String, String> film_names_for_output = Map.of("FilmDocumentaries", "Documentary", "FilmFeature", "FeatureFilm", "FilmShort", "ShortFilm", "FilmTvseries", "TVSeries");
+        Map<String, String> artist_names_for_output = Map.of("ArtistDirector", "Directors", "ArtistWriter", "Writers", "ArtistPerformerActor", "Actors", "ArtistPerformerChildActor", "ChildActors", "ArtistPerformerStuntPerformer", "StuntPerformers");
         String output_path = "src\\output.txt";
         FileOutput.writeToFile(output_path, "", false, false);
 
@@ -88,7 +90,7 @@ public class MovieDatabaseSys {
                     
 
                     if (check_id_user) {
-                        FileOutput.writeToFile(output_path, String.format("Command failed\nUser ID: %s\nFilm ID: %s\n\n-----------------------------------------------------------------------------------------------------\n", user_id, command_line[2]),true, false);
+                        FileOutput.writeToFile(output_path, String.format("Command Failed\nUser ID: %s\nFilm ID: %s\n\n-----------------------------------------------------------------------------------------------------\n", user_id, command_line[2]),true, false);
                     }
                     else if (check_rated_before) {
                         FileOutput.writeToFile(output_path, "This film was earlier rated\n\n-----------------------------------------------------------------------------------------------------\n",true, false);
@@ -117,7 +119,7 @@ public class MovieDatabaseSys {
                                 flim_title = film.title;
                             }
                         }
-                        FileOutput.writeToFile(output_path, String.format("Film rated successfully\nFilm Type: %s\nFilm title: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_type, flim_title),true, false);
+                        FileOutput.writeToFile(output_path, String.format("Film rated successfully\nFilm type: %s\nFilm title: %s\n\n-----------------------------------------------------------------------------------------------------\n", film_names_for_output.get(film_type), flim_title),true, false);
                     }
                     
                     break;
@@ -208,9 +210,13 @@ public class MovieDatabaseSys {
                                     rating = "Awaiting for votes";
                                 }
                                 else {
-                                    rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
+                                    String rate_result = String.format("%.1f", total_rating/total_users_rated);
+                                    if (rate_result.split(",")[1].equals("0")) {
+                                        rate_result = rate_result.split(",")[0];
+                                    }
+                                    rating = String.format("Ratings: %s/10 from %d users", rate_result, total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t(%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n",theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s (%s)\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n",theFilm.title, theFilm.getReleaseDate().substring(6, 10), theFilm.getGenre(), tem_writers, tem_directors, tem_stars, rating),true, false);
                             }
                             else if ((filmList.get(j) instanceof FilmDocumentaries)) {
                                 FilmDocumentaries theFilm = (FilmDocumentaries) filmList.get(j);
@@ -254,9 +260,13 @@ public class MovieDatabaseSys {
                                     rating = "Awaiting for votes";
                                 }
                                 else {
-                                    rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
+                                    String rate_result = String.format("%.1f", total_rating/total_users_rated);
+                                    if (rate_result.split(",")[1].equals("0")) {
+                                        rate_result = rate_result.split(",")[0];
+                                    }
+                                    rating = String.format("Ratings: %s/10 from %d users", rate_result, total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t(%s)\n\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n", theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s (%s)\n\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n", theFilm.title, theFilm.getReleaseDate().substring(6, 10), tem_directors, tem_stars, rating),true, false);
                             }
                             else if ((filmList.get(j) instanceof FilmTvseries)) {
                                 FilmTvseries theFilm = (FilmTvseries) filmList.get(j);
@@ -311,9 +321,13 @@ public class MovieDatabaseSys {
                                     rating = "Awaiting for votes";
                                 }
                                 else {
-                                    rating = String.format("Ratings: %s/10 from %d users", String.valueOf(total_rating/total_users_rated), total_users_rated);
+                                    String rate_result = String.format("%.1f", total_rating/total_users_rated);
+                                    if (rate_result.split(",")[1].equals("0")) {
+                                        rate_result = rate_result.split(",")[0];
+                                    }
+                                    rating = String.format("Ratings: %s/10 from %d users", rate_result, total_users_rated);
                                 }
-                                FileOutput.writeToFile(output_path, String.format("%s\t(%s-%s)\n%s seasons, %s episodes\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n", theFilm.title, theFilm.getStartDate().substring(6, 10), theFilm.getEndDate().substring(6, 10), theFilm.getSeasonNumber(), theFilm.getEpisodeNumber(), theFilm.getGenre().replace(",", ", "), tem_writers, tem_directors, tem_stars, rating),true, false);
+                                FileOutput.writeToFile(output_path, String.format("%s (%s-%s)\n%s seasons, %s episodes\n%s\nWriters: %s\nDirectors: %s\nStars: %s\n%s\n\n-----------------------------------------------------------------------------------------------------\n", theFilm.title, theFilm.getStartDate().substring(6, 10), theFilm.getEndDate().substring(6, 10), theFilm.getSeasonNumber(), theFilm.getEpisodeNumber(), theFilm.getGenre().replace(",", ", "), tem_writers, tem_directors, tem_stars, rating),true, false);
                             }
                             break;
                         }
@@ -359,7 +373,7 @@ public class MovieDatabaseSys {
                     }
 
                     if ((check_id_user2) || (!(check_user_has_rating))) {
-                        FileOutput.writeToFile(output_path, String.format("Command failed\nUser ID: %s\nFilm ID: %s\n\n-----------------------------------------------------------------------------------------------------\n", user_id2, command_line[3]),true, false);
+                        FileOutput.writeToFile(output_path, String.format("Command Failed\nUser ID: %s\nFilm ID: %s\n\n-----------------------------------------------------------------------------------------------------\n", user_id2, command_line[3]),true, false);
                     }
                     else {
                         for (Person person : peopleList) {
@@ -516,7 +530,7 @@ public class MovieDatabaseSys {
                             if (j != 0) {
                                 result.append("\n");
                             }
-                            result.append(film_types[j] + ":\n");
+                            result.append(film_names_for_output.get(film_types[j]) + ":\n");
                             
                             boolean added = true;
                             for (String film_id2 : sortedMap.keySet()) {
@@ -526,7 +540,11 @@ public class MovieDatabaseSys {
                                             result.append(String.format("%s (%s-%s) Ratings: %s/10 from %s users\n", film.title, ((FilmTvseries)film).getStartDate().substring(6, 10), ((FilmTvseries)film).getEndDate().substring(6, 10), sortedMap.get(film.id), rated_films_by_filmId.get(film.id).size()));
                                         }
                                         else {
-                                            result.append(String.format("%s (%s) Ratings: %s/10 from %s users\n", film.title, film.getReleaseDate().substring(6, 10), sortedMap.get(film.id), rated_films_by_filmId.get(film.id).size()));
+                                            String rateResult = sortedMap.get(film.id);
+                                            if (rateResult.length() == 3 && String.valueOf(rateResult.charAt(2)).equals("0")) {
+                                                rateResult = rateResult.split(",")[0];
+                                            }
+                                            result.append(String.format("%s (%s) Ratings: %s/10 from %s users\n", film.title, film.getReleaseDate().substring(6, 10), rateResult, rated_films_by_filmId.get(film.id).size()));
                                         }
                                         added = false;
                                     }
@@ -551,7 +569,7 @@ public class MovieDatabaseSys {
                             StringBuilder result = new StringBuilder();
                             
                             boolean added = true;
-                            result.append(artists[j] + ":\n");
+                            result.append(artist_names_for_output.get(artists[j]) + ":\n");
                             for (Person person : peopleList) {
                                 if (person.getClass().getName().equals(artists[j]) && person.country.equals(country)) {
                                     if (artists[j].equals("ArtistDirector")) {
