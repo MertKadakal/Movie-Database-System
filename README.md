@@ -39,4 +39,6 @@ error free only syntactically. The requirements and rules for the system are giv
     • A Short Film has a release date, writers and genre in addition to the common data. A
     Short Film’ runtime should be less ( or equal) than 40 min.
 
-![uml_diagram](https://github.com/MertKadakal/Movie-Database-System/blob/master/Explanation.pdf)
+Here's the UML class diagram of the project:
+
+![uml_diagram](https://github.com/MertKadakal/Movie-Database-System/blob/master/UML.png)
